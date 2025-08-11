@@ -1,0 +1,10 @@
+{
+	"CmajorVersion": 1,
+	"ID": "console.aurupure.buss",
+	"version": "1.0",
+	"name": "Console Aurupure Buss",
+	"description": "Cmajor patch",
+	"category": "effect",
+	"isInstrument": false,
+	"source": "ConsoleAurupureBuss.cmajor"
+}

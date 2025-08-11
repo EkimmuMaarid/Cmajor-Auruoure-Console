@@ -1,0 +1,36 @@
+processor ConsoleAurupureChannel
+{
+	input stream float In1, In2;
+	output stream float Out1, Out2;
+	
+	float Aurupure( float g ) /// Сoding of each channel by the golden ratio
+	{  
+		if ( g > 1.0f ) g = 1.0f;  
+		else if ( g > 0.0f )
+		{
+			g *= 0.63333333f;
+			g = - ( exp (  log ( 1.0f - g ) * 1.61803399f ) - 1.0f );
+		}
+			
+		if ( g < - 1.0f ) g = - 1.0f;
+		else if ( g < 0.0f )
+		{
+			g *= 0.63333333f;
+			g = exp ( log ( 1.0f + g ) * 1.61803399f ) - 1.0f;
+		}
+			
+		return g;
+	}
+
+	void main()
+	{	
+		loop 
+		{	
+			///we process and return the value of each channel in order
+			Out1 <- Aurupure ( In1 ); 
+			Out2 <- Aurupure ( In2 );
+			
+			advance();
+		}				
+	}	
+}
